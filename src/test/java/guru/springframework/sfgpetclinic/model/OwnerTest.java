@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.model;
 
+import guru.springframework.sfgpetclinic.CustomArgsProvider;
 import guru.springframework.sfgpetclinic.ModelTests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -84,7 +85,7 @@ class OwnerTest implements ModelTests {
         System.out.println(stateName + " = " + val1 + ":" + val2);
     }
 
-    @DisplayName("CSV Input File Test")
+    @DisplayName("Method Source Test")
     @ParameterizedTest(name = "{displayName} - [{index}] {arguments}")
     @MethodSource("getargs")
     void fromMethodTest(String stateName, int val1, int val2) {
@@ -98,4 +99,12 @@ class OwnerTest implements ModelTests {
                 Arguments.of("MI", 3, 1)
         );
     }
+
+    @DisplayName("Custom Provider Test")
+    @ParameterizedTest(name = "{displayName} - [{index}] {arguments}")
+    @ArgumentsSource(CustomArgsProvider.class)
+    void fromCustomArgsProviderTest(String stateName, int val1, int val2) {
+        System.out.println(stateName + " = " + val1 + ":" + val2);
+    }
+
 }
