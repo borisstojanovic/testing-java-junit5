@@ -61,7 +61,7 @@ class OwnerTest implements ModelTests {
     @DisplayName("Value Source Test")
     @ParameterizedTest(name = "{displayName} - [{index}] {arguments}")
     @EnumSource(OwnerType.class)
-    void testEnum() {
-
+    void testEnum(OwnerType ownerType) {
+        System.out.println(ownerType);
     }
 }
